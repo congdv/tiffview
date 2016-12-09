@@ -15,7 +15,6 @@ void parse_raster(uint32 *raster,matrix_t *matrix){
     unsigned char *data = (unsigned char *)malloc((npixels * matrix->channels) * sizeof(unsigned char));
     unsigned int row,col,channel;
     unsigned int index_pixel = 0;
-    printf("Channels %d\n",channels);
     for(row = 0; row < rows; row++){
         for(col = 0; col < cols; col++){
             for(channel =0 ; channel < channels; channel++){
@@ -28,20 +27,13 @@ void parse_raster(uint32 *raster,matrix_t *matrix){
     matrix->data = data;
 }
 
-matrix_t *read_image_tiff(const char *path_to_image)
+matrix_t *matrix_at(int index_page, TIFF *tif)
 {
-    matrix_t *matrix = (matrix_t *)malloc(sizeof(matrix_t));
-
+	matrix_t *matrix = (matrix_t *)malloc(sizeof(matrix_t));
     uint32 *raster;
     uint32 width, height;
     uint32 spp;/*sample per pixel*/
-    
-    /*Read image */
-    TIFF *tif = TIFFOpen(path_to_image,"r");
-    if(tif == NULL)
-        return NULL;
-    //Set first page sample
-    TIFFSetDirectory(tif,0);
+    TIFFSetDirectory(tif,index_page);
     /*Get width, height, and spp of image*/
     TIFFGetField(tif,TIFFTAG_IMAGEWIDTH,&width);
     TIFFGetField(tif,TIFFTAG_IMAGELENGTH,&height);
@@ -62,4 +54,26 @@ matrix_t *read_image_tiff(const char *path_to_image)
     }
 
     return matrix;
+}
+int page_quanity(TIFF *tif) 
+{
+	int counter = 0;
+	do {
+		counter++;
+	}while(TIFFReadDirectory(tif));
+	return counter;
+}
+matrix_t **read_image_tiff(const char *path_to_image,int *npages)
+{
+
+    /*Read image */
+    TIFF *tif = TIFFOpen(path_to_image,"r");
+    if(tif == NULL)
+        return NULL;
+	*npages = page_quanity(tif);
+    matrix_t **nmatrix = (matrix_t **)malloc(*npages *sizeof(matrix_t *));
+	for(int i = 0; i < *npages; i++){
+		nmatrix[i] = matrix_at(i,tif);
+	}
+	return nmatrix;
 }
