@@ -2,12 +2,15 @@
 Tiff image view
 #Requirement
 Library:
-    SDL 2: libsdl2-dev
-    lib tiff: libtiff-dev
+
+* SDL 2: libsdl2-dev
+* Read tiff library: libtiff-dev
 
 #USAGE: 
 To run:
+```
     ./viewer 6.tif
+```
 #ToDo
 ========
 - [O] GUI
