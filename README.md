@@ -1,5 +1,7 @@
 Tiff image view
 ===============
+Easy to view multiple page of tiff image.
+
 Library:
 
 * SDL 2: libsdl2-dev
@@ -19,4 +21,5 @@ ToDo
 	- [x] Multipage of tiff image
 	- [O] Zoom in and zoom out of image
 	- [O] Scroll for next page of image
-##Let review my code, and give me some comment. Thanks.
+	
+##I am very happy if you feedback to me about my code.
