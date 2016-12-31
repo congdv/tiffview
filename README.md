@@ -1,18 +1,16 @@
-# tiffview
 Tiff image view
-#Requirement
+===============
 Library:
 
 * SDL 2: libsdl2-dev
 * Read tiff library: libtiff-dev
 
-#USAGE: 
 To run:
 ```
     ./viewer 6.tif
 ```
-#ToDo
-========
+ToDo
+====
 - [O] GUI
 	- [O] Add menu bar
 	- [O] resizable gui
