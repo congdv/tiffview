@@ -1,17 +1,19 @@
 # tiffview
 Tiff image view
 #Requirement
+Library:
     SDL 2: libsdl2-dev
     lib tiff: libtiff-dev
 
 #USAGE: 
-
+To run:
     ./viewer 6.tif
 #ToDo
 ========
 - [O] GUI
 	- [O] Add menu bar
 	- [O] resizable gui
+        - [0] resize auto image
 - [O] Feature
 	- [x] Multipage of tiff image
 	- [O] Zoom in and zoom out of image
