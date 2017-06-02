@@ -2,11 +2,12 @@ View Tiff Image By SDL Library
 ===============
 Easy to view multiple page of tiff image.
 
-Library:
+## Require Library
 
 * SDL 2: libsdl2-dev
 * Read tiff library: libtiff-dev
 
+## Build
 To run:
 ```
     ./viewer 6.tif
