@@ -1,4 +1,4 @@
-Tiff image view
+View Tiff Image By SDL Library
 ===============
 Easy to view multiple page of tiff image.
 
